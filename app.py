@@ -178,7 +178,10 @@ def chat():
     try:
         response = chat_session.send_message(user_message)
         reply_text = (response.text or "").strip()
-        reply_text = reply_text.replace("-", "•")
+        
+    
+        reply_lines = reply_text.replace("*", "\n•").replace("-", "\n•")
+        reply_text = reply_lines.strip()
         
         return jsonify({"reply": reply_text})
     except Exception as e:
