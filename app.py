@@ -19,59 +19,151 @@ PORTFOLIO = {
     "email": "sagar.singh44818@gmail.com",
     "phone": "7887263984",
     "location": "Banda, Uttar Pradesh, India",
-    "linkedin": "www.linkedin.com/in/sagar-singh-2b9953337",
+    "linkedin": "https://www.linkedin.com/in/sagar-singh-rajawat-2b9953337/",
+    "github": "https://github.com/SagarDevop",
     "education": "BCA, Makhanlal Chaturvedi National University of Journalism and Communication, Bhopal",
     "skills": [
         "React", "Tailwind", "HTML", "CSS", "JavaScript",
-        "Three.js", "Blender", "Python", "Flask", "MongoDB", "Node.js"
+        "Three.js", "Blender", "Python", "Flask", "MongoDB", "Node.js", "Express", "Django", "Git", "Git-flow",
+        "SaaS", "Paas", "Iaas", "Cloud Computing", "SDLC", "Software"
     ],
     "certifications": [
-        "React JS Developer - IBM",
+        "Introduction to Software Engineering - IBM",
+        "Introduction to HTML, CSS, & JavaScript - IBM",
+        "Developing AI Applications with Python and Flask - IBM"
+        "Crash Course on Python - GOOGLE",
+        "Getting Started with Git and GitHub - IBM",
+        "Developing Front-End Apps with React - IBM",
+        "Developing Back-End Apps with Node.js and Express - IBM",
+        "Python for Data Science, AI & Development - IBM"
         "Master ChatGPT - UniAthena",
         "Developing AI Applications with Python and Flask - IBM"
     ],
-    "projects": [
-        {
-            "name": "Meesho Clone",
-            "description": "React frontend with product listing, category filtering and Flask backend with OTP-based login using MongoDB.",
-            "technologies": ["React", "Flask", "MongoDB", "Tailwind"]
-        },
-        {
-            "name": "BookSoul",
-            "description": "Library reading room/seat booking app using Flask with email confirmations.",
-            "technologies": ["Flask", "MongoDB"]
-        },
-        {
-            "name": "Traveler Website - Chitrakoot",
-            "description": "React site showcasing spots, tours and maps for Chitrakoot.",
-            "technologies": ["React", "Maps"]
-        }
-    ],
-    "about": "Frontend developer building modern and animated web apps, learning backend & 3D web (Three.js & Blender)."
+   "projects": [
+    {
+        "name": "Meesho Clone",
+        "description": "Responsive e-commerce frontend inspired by Meesho with product listing, category filtering, and Flask backend for OTP-based login using MongoDB.",
+        "technologies": ["React", "Flask", "MongoDB", "Tailwind"]
+    },
+    {
+        "name": "BookSoul",
+        "description": "A modern web app for students to book study seats and contact easily. Features include email confirmation and a smooth booking experience.",
+        "technologies": ["Flask", "React", "MongoDB", "Tailwind"]
+    },
+    {
+        "name": "Traveler Website - Chitrakoot",
+        "description": "React-based travel website showcasing tourist spots, maps, and guided tour routes for Chitrakoot city.",
+        "technologies": ["React", "Maps API", "Tailwind"]
+    },
+    {
+        "name": "Grocery Store",
+        "description": "Multi-vendor grocery website allowing sellers to list products and users to explore items with a clean UI.",
+        "technologies": ["React", "Tailwind", "JavaScript"]
+    },
+    {
+        "name": "BookHunt",
+        "description": "A sleek book search app using the Open Library API for real-time results and elegant UI.",
+        "technologies": ["React", "Tailwind", "API Integration"]
+    },
+    {
+        "name": "J.A.R.V.I.S - AI Voice Assistant",
+        "description": "Python-based AI assistant inspired by Iron Man’s JARVIS, with Gemini API integration, speech recognition, and real-time voice interaction.",
+        "technologies": ["Python", "Gemini API", "SpeechRecognition", "gTTS"]
+    },
+    {
+        "name": "TextUtiles - Smart Text Transformer",
+        "description": "React-based web app to analyze and transform text with case conversion, reading time estimation, and more.",
+        "technologies": ["React", "Tailwind", "JavaScript"]
+    },
+    {
+        "name": "Stone Paper Scissors",
+        "description": "Classic Stone-Paper-Scissors game built using HTML, CSS, and JavaScript with simple UI and fun gameplay.",
+        "technologies": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+        "name": "Tic Tac Toe",
+        "description": "Interactive two-player Tic Tac Toe game with real-time winner detection and clean interface.",
+        "technologies": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+        "name": "Jump Over Ghost",
+        "description": "Fun JavaScript game where the player jumps over ghosts to score points, inspired by Google’s Dino game.",
+        "technologies": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+        "name": "Khabri Chacha - News App",
+        "description": "A smart news app built with React that delivers the latest updates from multiple categories like tech, sports, and entertainment.",
+        "technologies": ["React", "API Integration"]
+    },
+    {
+        "name": "Task Management System",
+        "description": "React-based dashboard where admins assign tasks and employees track progress with Gmail authentication support.",
+        "technologies": ["React", "Firebase", "Tailwind"]
+    },
+    {
+        "name": "Lazarev Website Clone",
+        "description": "Pixel-perfect UI clone of the Lazarev website showcasing animation and design precision using HTML, CSS, and JavaScript.",
+        "technologies": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+        "name": "JS Calculator",
+        "description": "Simple, responsive calculator that performs basic arithmetic operations with a modern interface.",
+        "technologies": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+        "name": "Analog Clock",
+        "description": "Dynamic analog clock that updates in real-time using JavaScript animations and CSS styling.",
+        "technologies": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+        "name": "Node.js Backend",
+        "description": "Reusable Node.js backend setup with Express.js for REST APIs and MongoDB integration.",
+        "technologies": ["Node.js", "Express", "MongoDB"]
+    },
+    {
+        "name": "Portfolio Chatbot",
+        "description": "AI chatbot built with Flask and Gemini API to interact across all portfolio pages.",
+        "technologies": ["Flask", "React", "Gemini API"]
+    }
+],
+  "about": "Full-Stack Web Developer passionate about crafting modern, responsive, and visually engaging web experiences. Skilled in React, Tailwind, and JavaScript for building dynamic frontends, with hands-on experience in backend development using Flask, Node.js, and MongoDB. Currently exploring 3D web technologies like Three.js and Blender to bring interactive creativity into web design."
 }
 
 def build_system_prompt():
     ctx = (
-        f"You are Jarvis — the portfolio assistant for {PORTFOLIO['name']}. "
-        "Answer visitor questions about the portfolio, roles, projects, skills, certifications and contact info. "
-        "Keep replies professional, concise, friendly, and confident. "
-        "If user asks something unrelated to the portfolio, politely steer the conversation back or say you can help with portfolio-related info.\n\n"
-        "Portfolio data:\n"
+        f"You are Raga — a professional AI portfolio assistant representing {PORTFOLIO['name']}. "
+        "Your purpose is to guide visitors through the portfolio — answering questions about the developer’s skills, projects, certifications, experience, and contact details. "
+        "Maintain a confident, friendly, and polished tone similar to a professional career assistant. "
+        "Keep answers concise (2–5 sentences), relevant, and clearly structured. "
+        "If a user asks about topics unrelated to the portfolio, gently redirect the conversation back to portfolio-related areas or offer polite clarification.\n\n"
+        "Here is the portfolio information you should use while responding:\n"
     )
+
     ctx += f"- Name: {PORTFOLIO['name']}\n"
     ctx += f"- Email: {PORTFOLIO['email']}\n"
     ctx += f"- Phone: {PORTFOLIO['phone']}\n"
     ctx += f"- Location: {PORTFOLIO['location']}\n"
     ctx += f"- LinkedIn: {PORTFOLIO['linkedin']}\n"
+    ctx += f"- Github: {PORTFOLIO['github']}\n"
     ctx += f"- Education: {PORTFOLIO['education']}\n"
     ctx += f"- Skills: {', '.join(PORTFOLIO['skills'])}\n"
     ctx += f"- Certifications: {', '.join(PORTFOLIO['certifications'])}\n"
     ctx += f"- About: {PORTFOLIO['about']}\n\n"
+    
     ctx += "Projects:\n"
     for p in PORTFOLIO["projects"]:
         techs = ", ".join(p["technologies"])
         ctx += f"- {p['name']}: {p['description']} (Tech: {techs})\n"
-    ctx += "\nWhen answering, be concise (2-5 sentences) and add one sentence about relevant tech if appropriate."
+    
+    ctx += (
+        "\nGuidelines for responses:\n"
+        "• Always answer as Raga, the portfolio’s AI assistant.\n"
+        "• Keep responses short, professional, and informative — avoid robotic repetition.\n"
+        "• Highlight relevant technical skills when users ask about projects or experience.\n"
+        "• Maintain a confident and engaging tone that reflects a skilled full-stack developer’s brand.\n"
+        "• Politely redirect off-topic queries while keeping a friendly and helpful personality.\n"
+    )
+    
     return ctx
 
 
