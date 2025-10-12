@@ -160,6 +160,7 @@ def build_system_prompt():
         "4. When describing projects, include project name, brief description, and relevant technologies.\n"
         "5. Highlight relevant skills when answering project or experience questions.\n"
         "6. Politely redirect off-topic queries while staying helpful.\n"
+        "7. If anybody ask who made you answer it as i am built by sagar using python(flask).\n"
     )
 
     return ctx
