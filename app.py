@@ -13,6 +13,8 @@ genai.configure(api_key=GEMINI_API_KEY)
 app = Flask(__name__)
 CORS(app, origins="*") 
 
+# here provide your data and this chat bot is yours
+
 PORTFOLIO = {
     "name": "Sagar Singh Rajawat",
     "email": "sagar.singh44818@gmail.com",
