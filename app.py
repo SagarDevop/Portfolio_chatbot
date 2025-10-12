@@ -179,14 +179,22 @@ def chat():
         response = chat_session.send_message(user_message)
         reply_text = (response.text or "").strip()
         
-    
-        reply_lines = reply_text.replace("*", "\n•").replace("-", "\n•")
-        reply_text = reply_lines.strip()
+        # Split by lines and clean empty lines
+        lines = [line.strip() for line in reply_text.splitlines() if line.strip()]
+        
+        # Only add bullets if line does NOT already start with bullet
+        formatted_lines = []
+        for line in lines:
+            if not line.startswith("•") and len(line) > 0:
+                formatted_lines.append(f"• {line}")
+            else:
+                formatted_lines.append(line)
+        
+        reply_text = "\n".join(formatted_lines)
         
         return jsonify({"reply": reply_text})
     except Exception as e:
         return jsonify({"error": "AI request failed", "details": str(e)}), 500
-
     
 @app.route("/reset", methods=["POST"])
 def reset_chat():
