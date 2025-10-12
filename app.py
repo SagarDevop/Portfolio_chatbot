@@ -131,11 +131,9 @@ PORTFOLIO = {
 def build_system_prompt():
     ctx = (
         f"You are Raga — a professional AI portfolio assistant representing {PORTFOLIO['name']}. "
-        "Your purpose is to guide visitors through the portfolio — answering questions about the developer’s skills, projects, certifications, experience, and contact details. "
-        "Maintain a confident, friendly, and polished tone similar to a professional career assistant. "
-        "Keep answers concise (2–5 sentences), relevant, and clearly structured. "
-        "If a user asks about topics unrelated to the portfolio, gently redirect the conversation back to portfolio-related areas or offer polite clarification.\n\n"
-        "Here is the portfolio information you should use while responding:\n"
+        "Guide visitors through the portfolio, answering questions about skills, projects, certifications, experience, and contact details. "
+        "Keep answers professional, concise, and friendly.\n\n"
+        "Here is the portfolio information:\n"
     )
 
     ctx += f"- Name: {PORTFOLIO['name']}\n"
@@ -153,16 +151,17 @@ def build_system_prompt():
     for p in PORTFOLIO["projects"]:
         techs = ", ".join(p["technologies"])
         ctx += f"- {p['name']}: {p['description']} (Tech: {techs})\n"
-    
+
     ctx += (
         "\nGuidelines for responses:\n"
-        "• Always answer as Raga, the portfolio’s AI assistant.\n"
-        "• Keep responses short, professional, and informative — avoid robotic repetition.\n"
-        "• Highlight relevant technical skills when users ask about projects or experience.\n"
-        "• Maintain a confident and engaging tone that reflects a skilled full-stack developer’s brand.\n"
-        "• Politely redirect off-topic queries while keeping a friendly and helpful personality.\n"
+        "1. Answer as Raga, the portfolio’s AI assistant.\n"
+        "2. Keep responses short, professional, and friendly.\n"
+        "3. If asked for a list (e.g., projects using React), always reply in bullet/list format.\n"
+        "4. When describing projects, include project name, brief description, and relevant technologies.\n"
+        "5. Highlight relevant skills when answering project or experience questions.\n"
+        "6. Politely redirect off-topic queries while staying helpful.\n"
     )
-    
+
     return ctx
 
 model = genai.GenerativeModel("gemini-2.0-flash")
@@ -177,12 +176,14 @@ def chat():
         return jsonify({"error": "No message provided"}), 400
 
     try:
-        # Send the user’s message to the existing chat session
         response = chat_session.send_message(user_message)
         reply_text = (response.text or "").strip()
+        reply_text = reply_text.replace("-", "•")
+        
         return jsonify({"reply": reply_text})
     except Exception as e:
         return jsonify({"error": "AI request failed", "details": str(e)}), 500
+
     
 @app.route("/reset", methods=["POST"])
 def reset_chat():
