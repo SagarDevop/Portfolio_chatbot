@@ -1,4 +1,3 @@
-
 import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -166,23 +165,31 @@ def build_system_prompt():
     
     return ctx
 
+model = genai.GenerativeModel("gemini-2.0-flash")
+chat_session = model.start_chat(history=[{"role": "user", "parts": build_system_prompt()}])
 
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json() or {}
     user_message = data.get("message", "").strip()
+
     if not user_message:
         return jsonify({"error": "No message provided"}), 400
 
-    system_prompt = build_system_prompt()
-    full_prompt = system_prompt + f"\nUser: {user_message}\nJarvis:"
     try:
-        model = genai.GenerativeModel(model_name="gemini-2.0-flash")
-        resp = model.generate_content(full_prompt)
-        text = (resp.text or "").strip()
-        return jsonify({"reply": text})
+        # Send the user’s message to the existing chat session
+        response = chat_session.send_message(user_message)
+        reply_text = (response.text or "").strip()
+        return jsonify({"reply": reply_text})
     except Exception as e:
         return jsonify({"error": "AI request failed", "details": str(e)}), 500
+    
+@app.route("/reset", methods=["POST"])
+def reset_chat():
+    global chat_session
+    chat_session = model.start_chat(history=[{"role": "user", "parts": build_system_prompt()}])
+    return jsonify({"message": "Chat session reset successfully."})
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
