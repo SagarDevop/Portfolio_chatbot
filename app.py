@@ -194,6 +194,12 @@ def reset_chat():
     chat_session = model.start_chat(history=[{"role": "user", "parts": build_system_prompt()}])
     return jsonify({"message": "Chat session reset successfully."})
 
+@app.route("/", methods = ["GET"])
+def wakeup():
+    msg = "wakingup..."
+    return jsonify({
+        "message": "waking up"
+    })
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
