@@ -4,7 +4,7 @@ from flask_cors import CORS
 import google.generativeai as genai
 
 
-GEMINI_API_KEY = "AIzaSyCFIWRIZ5V-XP2N9oKgxwmdjNK9FMxb3Dc"
+GEMINI_API_KEY = "AIzaSyA8CqpYDLRa2raafn71ZFPqTHI-Ft5iC0I"
 if not GEMINI_API_KEY:
     raise RuntimeError("Set GEMINI_API_KEY environment variable")
 
@@ -167,7 +167,7 @@ def build_system_prompt():
 
     return ctx
 
-model = genai.GenerativeModel("gemini-2.0-flash")
+model = genai.GenerativeModel("gemini-2.5-flash")
 chat_session = model.start_chat(history=[{"role": "user", "parts": build_system_prompt()}])
 
 @app.route("/chat", methods=["POST"])
